@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<application xmlns="command_manager" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="command_manager config.xsd">
+    <application_name>Pack and Deploy</application_name>
+    <!--Notice that you can just replace the trunk and branch path like "/data/home//mywork/trunk" -->
+    <project>
+        <name>Trunk</name>
+        <commands>
+            <command>
+                <description>Pack &amp; Deploy IHA</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-iha-iha.war/target-iha.war /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-iha</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+                <selected>false</selected>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy backend</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-backend-backend.ear/target-backend.ear /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-backend</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+                <selected>true</selected>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy Broker WS</description>
+                <command_string>/data/home//mywork/trunk-brokerWS/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-brokerWS-brokerWS.ear/target-brokerWS.ear /data/jbosses/jboss8/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-brokerWS</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+                <selected>true</selected>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy Web</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-web-web.ear/target-web.ear /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-web</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy Security</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-security/target-security.jar /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-security</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy MCL</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-mcl-mcl.ear/target-mcl.ear /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-mcl</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy OCR</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-ocr-ocr.ear/target-ocr.ear /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-ocr</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+            </command>
+            <command>
+                <description>Pack &amp; Deploy scheduler</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-scheduler-scheduler.ear/target-scheduler.ear /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-scheduler</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+            </command>
+            <command>
+                <description>Copy config.xml</description>
+                <command_string>/bin/cp -f /data/home//mywork/trunk/document/back-end/administration/* /usr/local/backend</command_string>
+                <directory>/usr/local/backend</directory>
+                <selected>true</selected>
+            </command>
+            <command>
+                <description>Copy Rules file</description>
+                <command_string>/bin/cp -f /data/home//mywork/trunk/document/back-end/rules/* /usr/local/backend/rules</command_string>
+                <directory>/usr/local/backend/rules</directory>
+                <selected>true</selected>
+            </command>
+            <command>
+                <description>Copy template files</description>
+                <command_string>/bin/cp -f /data/home//mywork/trunk/document/back-end/template/*.vm /usr/local/backend/template</command_string>
+                <directory>/usr/local/backend/template</directory>
+                <selected>true</selected>
+            </command>
+        </commands>
+    </project>
+
+    <project>
+        <name>Deploy Trunk</name>
+        <commands>
+            <command>
+                <description>Deploy IHA</description>
+                <command_string>/bin/cp -f /data/home//mywork/trunk-iha-iha.war/target-iha.war /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/trunk-iha</directory>
+                <selected>false</selected>
+            </command>
+        </commands>
+    </project>
+
+    <project>
+        <name>Branch</name>
+        <commands>
+            <command>
+                <description>Pack &amp; Deploy</description>
+                <command_string>/usr/local/maven/apache-maven-2.2.1/bin/mvn clean install</command_string>
+                <command_string>/bin/cp -f /data/home//mywork/R4.6-iha-iha.war/target-iha.war /data/jbosses/jboss6/server/default/deploy</command_string>
+                <directory>/data/home//mywork/R4.6-iha</directory>
+                <successful_string>SUCCESSFUL</successful_string>
+                <selected>false</selected>
+            </command>
+        </commands>
+    </project>
+</application>

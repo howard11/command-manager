@@ -1,0 +1,7 @@
+Notice: This program has no copyright limit.
+
+This tool is used to manage shell commands.
+These commands are configured in config.xml file and easy to add, alter or delete.
+When you need to change the commands, we recommend to use the editor that support schema check like Intellij.
+
+Any improvement or advice is appreciated!

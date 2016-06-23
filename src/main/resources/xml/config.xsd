@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="command_manager"
+           xmlns="command_manager"
+           elementFormDefault="qualified">
+    <xs:element name="application">
+        <xs:complexType>
+            <xs:sequence>
+                <!--Application name show in frame title-->
+                <xs:element name="application_name" type="xs:string"/>
+                <!-- Projects-->
+                <xs:element name="project" minOccurs="0" maxOccurs="100">
+                    <xs:complexType>
+                        <xs:all>
+                            <!--project name-->
+                            <xs:element name="name" type="xs:string"/>
+
+                            <!--project selected-->
+                            <xs:element name="selected" minOccurs="0">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="true"/>
+                                        <xs:enumeration value="false"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <!--command data source-->
+                            <xs:element name="commands" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="command" maxOccurs="100">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="description" type="xs:string"/>
+                                                    <xs:element name="command_string" maxOccurs="100">
+                                                        <xs:simpleType>
+                                                            <xs:list itemType="xs:string"/>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="directory" type="xs:string"/>
+                                                    <xs:element name="filter" type="xs:string"
+                                                                minOccurs="0"/>
+                                                    <xs:element name="successful_string" type="xs:string"
+                                                                minOccurs="0"/>
+                                                    <!--command selected-->
+                                                    <xs:element name="selected" minOccurs="0">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="true"/>
+                                                                <xs:enumeration value="false"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
